@@ -48,13 +48,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: Text('Plugin example app'),
         ),
         resizeToAvoidBottomInset: false,
         body: Column(
           children: [
-            const Expanded(
-              child: Text('我是flutter'),
+            Expanded(
+              child: Center(child: Text('我是flutter\n 高度$tempHeight')),
             ),
             const TextField(
               decoration: InputDecoration(hintText: '请输入内容'),
