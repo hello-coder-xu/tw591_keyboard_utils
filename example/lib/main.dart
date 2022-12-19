@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tw591_keyboard_utils/listener/tw591_keyboard_listener.dart';
 
-import 'package:tw591_keyboard_utils/listener/tw591_keyboard_utils.dart';
+import 'package:tw591_keyboard_utils/tw591_keyboard_utils.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Plugin example app'),
+          title: const Text('Plugin example app'),
         ),
         resizeToAvoidBottomInset: false,
         body: Column(
