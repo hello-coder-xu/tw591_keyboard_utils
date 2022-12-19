@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:tw591_keyboard_utils/listener/tw591_keyboard_listener.dart';
 import 'package:tw591_keyboard_utils/model/keyboard_model.dart';
@@ -42,7 +43,7 @@ class Tw591KeyboardUtils {
 
   /// 软键盘变化
   void listenerKeyboardChanged(event) {
-    print('test flutter 接收=$event');
+    debugPrint('test flutter 接收=$event');
     var temp = json.decode(event);
     KeyboardModel keyboardModel = KeyboardModel.fromJson(temp);
     listeners.forEach((key, value) {

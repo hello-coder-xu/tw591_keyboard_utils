@@ -23,12 +23,12 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     tw591keyboardListener = Tw591KeyboardListener(
       willHideKeyboard: () {
-        print('软键盘 关闭');
+       debugPrint('软键盘 关闭');
         tempHeight = 0;
         setState(() {});
       },
       willShowKeyboard: (height) {
-        print('软键盘 打开 height=$height');
+        debugPrint('软键盘 打开 height=$height');
         tempHeight = height;
         setState(() {});
       },
