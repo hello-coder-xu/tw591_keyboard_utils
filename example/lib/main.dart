@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tw591_keyboard_utils/tw591_keyboard_utils_platform_interface.dart';
-import 'package:tw591_keyboard_utils/keyboard_listener.dart' as tw;
+import 'package:tw591_keyboard_utils/listener/tw591_keyboard_listener.dart';
+
+import 'package:tw591_keyboard_utils/listener/tw591_keyboard_utils.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,13 +15,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  tw.KeyboardListener keyboardListener = tw.KeyboardListener();
-
   double tempHeight = 0;
+
+  late Tw591KeyboardListener tw591keyboardListener;
 
   @override
   void initState() {
-    Tw591KeyboardUtilsPlatform.instance.addKeyboardChanged(tw.KeyboardListener(
+    tw591keyboardListener = Tw591KeyboardListener(
       willHideKeyboard: () {
         print('软键盘 关闭');
         tempHeight = 0;
@@ -31,8 +32,15 @@ class _MyAppState extends State<MyApp> {
         tempHeight = height;
         setState(() {});
       },
-    ));
+    );
+    Tw591KeyboardUtils.instance.registerChanged(tw591keyboardListener);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    Tw591KeyboardUtils.instance.unRegisterChanged(tw591keyboardListener);
+    super.dispose();
   }
 
   @override
