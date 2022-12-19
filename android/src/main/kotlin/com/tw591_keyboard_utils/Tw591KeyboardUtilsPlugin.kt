@@ -33,7 +33,6 @@ class Tw591KeyboardUtilsPlugin : FlutterPlugin, ActivityAware, EventChannel.Stre
         if (this.activity != null) {
             keyboardUtil?.unregisterKeyboardHeightListener()
             keyboardUtil = TwKeyboardUtils()
-
         }
     }
 
@@ -74,9 +73,7 @@ class Tw591KeyboardUtilsPlugin : FlutterPlugin, ActivityAware, EventChannel.Stre
     }
 
     override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
-        println("test 我进来了 000 ")
         activity?.apply {
-            println("test 我进来了 1111")
             keyboardUtil?.registerKeyboardHeightListener(activity, object : KeyboardHeightListener {
                 override fun open(height: Int) {
                     val tempHeight = DisplayUtil.pxTodp(activity, height.toFloat())
